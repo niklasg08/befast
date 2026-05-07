@@ -20,7 +20,7 @@ const Home = () => {
       </View>
       <Image source={Logo} style={styles.logo} />
 
-      <Text style={styles.title}>Highscore: 67</Text>
+      <Text style={styles.heading1}>Highscore: 67</Text>
 
       <Link href="/game" style={styles.buttonPlay}>
         Play
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 70,
   },
-  title: {
-    fontSize: 20,
+  heading1: {
+    fontSize: 24,
     fontWeight: "bold",
   },
   logo: {
