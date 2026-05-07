@@ -1,11 +1,14 @@
 import { StyleSheet, Dimensions, Text, View, Image, Switch } from "react-native";
 import { Link } from "expo-router";
+import { useStorage } from "../storage/storageProvider";
 
 import Back from "../assets/icon-back.png";
 
 const screenWidth = Dimensions.get("window").width
 
 const Settings = () => {
+  const { storage, toggleHapticEnabled } = useStorage();
+
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
@@ -13,8 +16,11 @@ const Settings = () => {
           <Image source={Back} style={styles.buttonIcon} />
         </Link>
       </View>
-      <View>
+      <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
+        <Text style={styles.text}>Haptic Feedback</Text>
         <Switch
+          onValueChange={toggleHapticEnabled}
+          value={storage.isHapticEnabled}
         />
       </View>
     </View>
@@ -27,7 +33,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
   navbar: {
     position: "absolute",
